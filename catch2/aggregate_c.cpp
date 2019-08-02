@@ -183,7 +183,6 @@ TEST_CASE ("single_test","[find_test]")
     {
         int a1[]{ 2, 4, 6 };
         REQUIRE_THROWS_AS(  a1 >> single([](int& i) { return i % 2 == 0; },0),more_than_one);
-        //auto e{  a1 >> single([](int& i) { return i % 2 == 0; })};
     }
 }
 TEST_CASE ("distinct_test","[set_test]")

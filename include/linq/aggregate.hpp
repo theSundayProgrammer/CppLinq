@@ -279,7 +279,7 @@ namespace linq
             auto eter{ e.enumerator() };
             T result{ std::forward<T>(def) };
             std::size_t num{ 0 };
-            for (; eter; ++eter)
+            for (; eter && num < 2; ++eter)
             {
                 if (pred(*eter))
                 {
@@ -408,11 +408,11 @@ namespace linq
             template <typename Eter>
             constexpr reverse_enumerator(Eter&& eter)
             {
-                //std::cout << "RE Ctor "<< std::endl;
                 for (; eter; ++eter)
                 {
                     m_vec.push_back(*eter);
                 }
+                //reverse vector
                 int n = m_vec.size()/2;
                 auto start = m_vec.begin();
                 auto fin = m_vec.end();
