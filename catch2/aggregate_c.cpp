@@ -60,7 +60,7 @@ TEST_CASE ("reverse_test","[aggregate_test]")
 {
     int a1[]{ 1, 2, 3, 4, 5, 6 };
     int a2[]{ 6, 5, 4, 3, 2, 1 };
-    auto e= a1 >> reverse()>>to_vector<int>() ;
+    auto e= a1 >> reverse();
     test_equals(a2, e);
 }
 
