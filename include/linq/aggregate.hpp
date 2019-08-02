@@ -28,7 +28,7 @@
 
 #include <algorithm>
 #include <vector>
-#include <deque>
+#include <vector>
 #include <linq/core.hpp>
 #include <map>
 #include <set>
@@ -549,7 +549,7 @@ namespace linq
     {
         return [&](auto e) {
             using T = remove_cref<decltype(*e.enumerator())>;
-            std::deque<T> result(e.begin(), e.end());
+            std::vector<T> result(e.begin(), e.end());
             std::sort(result.begin(), result.end(), make_sorter<Comparer...>(std::forward<Comparer>(comparer)...));
             return get_enumerable(std::move(result));
         };
@@ -857,8 +857,8 @@ namespace linq
         class group_enumerator
         {
         private:
-            std::map<TKey, std::deque<TElement>, Comparer> m_lookup;
-            typename std::map<TKey, std::deque<TElement>, Comparer>::iterator m_begin, m_end;
+            std::map<TKey, std::vector<TElement>, Comparer> m_lookup;
+            typename std::map<TKey, std::vector<TElement>, Comparer>::iterator m_begin, m_end;
             ResultSelector m_rstsel;
 
         public:
@@ -916,7 +916,7 @@ namespace linq
         {
         private:
             Eter m_eter;
-            std::map<TKey, std::deque<TElement>, Comparer> m_lookup;
+            std::map<TKey, std::vector<TElement>, Comparer> m_lookup;
             KeySelector m_keysel;
             ResultSelector m_rstsel;
 
@@ -960,8 +960,8 @@ namespace linq
         {
         private:
             Eter m_eter;
-            std::map<TKey, std::deque<TElement>, Comparer> m_lookup;
-            typename std::deque<TElement>::iterator m_begin, m_end;
+            std::map<TKey, std::vector<TElement>, Comparer> m_lookup;
+            typename std::vector<TElement>::iterator m_begin, m_end;
             KeySelector m_keysel;
             ResultSelector m_rstsel;
 
