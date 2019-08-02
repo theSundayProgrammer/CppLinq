@@ -27,7 +27,7 @@
 #define LINQ_AGGREGATE_HPP
 
 #include <algorithm>
-#include <vector>
+#include <deque>
 #include <vector>
 #include <linq/core.hpp>
 #include <map>
@@ -383,8 +383,8 @@ namespace linq
         class reverse_enumerator
         {
         private:
-            std::vector<T> m_vec;
-            typename std::vector<T>::iterator m_begin, m_end;
+            std::deque<T> m_vec;
+            typename std::deque<T>::iterator m_begin, m_end;
 
         public:
             // Prevent multi-reverse in copying.
@@ -410,17 +410,7 @@ namespace linq
             {
                 for (; eter; ++eter)
                 {
-                    m_vec.push_back(*eter);
-                }
-                //reverse vector
-                int n = m_vec.size()/2;
-                auto start = m_vec.begin();
-                auto fin = m_vec.end();
-                for(int i=0; i<n;++i)
-                {
-                   --fin;
-                   std::swap(*fin,*start);
-                   ++start;  
+                    m_vec.push_front(*eter);
                 }
                 m_begin = m_vec.begin();
                 m_end = m_vec.end();
