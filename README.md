@@ -1,92 +1,12 @@
 # CppLinq
 A simple LINQ library for C++.
-## Usage
-To find the square root of the non-negative even numbers less than 10:
-``` c++
-using namespace std;
-using namespace linq;
+This is forked from https://github.com/berrysoft/CppLinq
+The old README file is renamed to OLdREADME.md
+## Changes from Berrysoft
+The old test files can be found in the 'test' folder.  The new tests use [catch2](https://github.com/catchorg/Catch2/releases/download/v2.9.1/catch.hpp) and can be found in the catch2 folder. This fork also fixes an isue regarding reverse raise at the original repo.
+Notice that there is no 'make' file. Each `cpp` file  in `catch2` folder is a separate test and can be complied in g++ as in 
+    g++ -std=c++17 -I<your_include_folder> <filename>.cpp
 
-range(0, 10) >>
-	where([](int a) { return a % 2 == 0; }) >>
-	select([](int a) { return sqrt(a); }) >>
-	for_each([](double a) { cout << a << endl; });
-```
-Here we use `operator>>` to make it extensible.
-For extension sample, see [extension_test.cpp](test/extension_test.cpp).
-## Supported methods
-### Core
-* append
-* concat
-* equals
-* equals_weak
-* insert
-* prepend
-* range
-* repeat
-### Query
-* cast
-* select
-* select_index
-* select_many
-* select_many_index
-* skip
-* skip_while
-* skip_while_index
-* take
-* take_while
-* take_while_index
-* where
-* where_index
-* zip
-* zip_index
-### Aggregate
-* aggregate
-* all
-* any
-* average
-* back
-* contains
-* count
-* default_if_empty
-* distinct
-* empty
-* except
-* for_each
-* for_each_index
-* front
-* get_at
-* group
-* group_join
-* index_of
-* intersect
-* join
-* limit
-* max
-* min
-* peek
-* peek_index
-* reverse
-* single
-* sort
-* sum
-* union_set
-### ToContainer
-* to_deque
-* to_list
-* to_map
-* to_multimap
-* to_set
-* to_vector
-### String
-* ends_with
-* instr
-* joinstr
-* read_lines
-* remove
-* replace
-* split
-* starts_with
-* trim
-* trim_right
-* trim_left
-* write_lines
+Your include folder must the `linq` and `catch2` sub-folders
+
+
