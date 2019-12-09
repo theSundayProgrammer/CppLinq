@@ -406,6 +406,7 @@ namespace linq
             }
 
             template <typename Eter>
+            explicit
             constexpr reverse_enumerator(Eter&& eter)
             {
                 for (; eter; ++eter)
